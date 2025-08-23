@@ -5,17 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The OG's Pet</title>
 <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; }
-    header { background: #333; color: #fff; padding: 10px; text-align:center; }
-    nav { display: flex; background: #555; }
-    nav button { flex:1; padding:10px; background:#555; color:#fff; border:none; cursor:pointer; }
-    nav button.active { background:#888; }
-    section { display:none; padding:20px; }
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f0f0f0; }
+    header { background: #222; color: #fff; padding: 15px; text-align:center; }
+    nav { display: flex; background: #444; }
+    nav button { flex:1; padding:12px; background:#444; color:#fff; border:none; cursor:pointer; transition:0.3s; }
+    nav button:hover, nav button.active { background:#666; }
+    section { display:none; padding:20px; background:#fff; min-height:400px; }
     section.active { display:block; }
     #chatBox { border:1px solid #ccc; padding:10px; height:300px; overflow-y:auto; background:#f9f9f9; }
     .chat-message { margin:5px 0; }
     .bot { color: blue; }
-    .options button { margin:5px; padding:10px; cursor:pointer; }
+    .options button { margin:5px; padding:10px 15px; cursor:pointer; background:#222; color:#fff; border:none; border-radius:5px; }
+    .options button:hover { background:#555; }
     footer { text-align:center; margin-top:20px; font-size:12px; color:#555; }
 </style>
 </head>
@@ -32,21 +33,20 @@
 </nav>
 
 <section id="home" class="active">
-    <h2>Welcome to The OG's Pet Website</h2>
-    <p>This website is full of content and fun stuff. Explore the tabs!</p>
+    <h2>Welcome!</h2>
+    <p>This is The OG's Pet site. Only the AI talks here. Enjoy!</p>
 </section>
 
 <section id="about">
-    <h2>About OG</h2>
-    <p>This website was made by OG. The chatbot here is called "The OG's Pet".</p>
+    <h2>About The OG</h2>
+    <p>OG is mysterious and cool. The chatbot talks on its behalf. You just watch!</p>
 </section>
 
 <section id="chat">
     <h2>Chat with The OG's Pet</h2>
     <div id="chatBox"></div>
     <div class="options">
-        <button onclick="botMessage('BYE BYE!!!')">BYE BYE!!!</button>
-        <button onclick="notifyOG()">Talk directly with the OG</button>
+        <button onclick="endChat()">BYE BYE!!!</button>
     </div>
 </section>
 
@@ -55,10 +55,9 @@
 </footer>
 
 <script>
-    // Tabs functionality
+    // Tabs
     const tabs = document.querySelectorAll('.tabBtn');
     const sections = document.querySelectorAll('section');
-
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             tabs.forEach(t => t.classList.remove('active'));
@@ -68,7 +67,7 @@
         });
     });
 
-    // Chatbot messages
+    // Chatbot
     const chatBox = document.getElementById('chatBox');
     function botMessage(msg) {
         const div = document.createElement('div');
@@ -78,24 +77,30 @@
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    // Browser notification for OG
-    function notifyOG() {
-        if (Notification.permission === 'granted') {
-            new Notification("OG's Pet", {
-                body: "A user wants to talk to the OG!",
-                icon: "https://cdn-icons-png.flaticon.com/512/616/616408.png"
-            });
-        } else if (Notification.permission !== 'denied') {
-            Notification.requestPermission().then(permission => {
-                if (permission === 'granted') notifyOG();
-            });
-        }
+    // End chat
+    function endChat() {
+        botMessage("OG's Pet: Goodbye! 👋");
     }
 
-    // Initial greeting
-    botMessage("Hello! I am The OG's Pet. How can I assist you today?");
+    // Auto chatbot conversation
+    const conversation = [
+        "Hello! I am The OG's Pet.",
+        "I talk on behalf of OG.",
+        "You don't need to reply, just watch me chat.",
+        "I can tell you cool facts, jokes, or secrets.",
+        "At the end, press BYE BYE!!! to end the chat."
+    ];
+
+    let index = 0;
+    function autoChat() {
+        if (index < conversation.length) {
+            botMessage(conversation[index]);
+            index++;
+            setTimeout(autoChat, 2500);
+        }
+    }
+    autoChat();
 </script>
 
 </body>
 </html>
-
