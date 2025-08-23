@@ -1,143 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OG Designers | Photo & Video Editing</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #333;
-    }
-
-    header {
-      background-color: #d32f2f; /* Adobe red */
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
-    }
-
-    nav {
-      background: #b71c1c; /* darker red */
-      display: flex;
-      justify-content: center;
-      padding: 0.5rem;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    section h2 {
-      color: #d32f2f;
-      margin-bottom: 1rem;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: #f9f9f9;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      padding: 1rem;
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    }
-
-    footer {
-      background: #d32f2f;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-
-    .email {
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The OG's Pet</title>
+<style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; }
+    header { background: #333; color: #fff; padding: 10px; text-align:center; }
+    nav { display: flex; background: #555; }
+    nav button { flex:1; padding:10px; background:#555; color:#fff; border:none; cursor:pointer; }
+    nav button.active { background:#888; }
+    section { display:none; padding:20px; }
+    section.active { display:block; }
+    #chatBox { border:1px solid #ccc; padding:10px; height:300px; overflow-y:auto; background:#f9f9f9; }
+    .chat-message { margin:5px 0; }
+    .bot { color: blue; }
+    .options button { margin:5px; padding:10px; cursor:pointer; }
+    footer { text-align:center; margin-top:20px; font-size:12px; color:#555; }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>OG Designers</h1>
-    <p>Photo & Video Editing Solutions</p>
-  </header>
+<header>
+    <h1>The OG's Pet</h1>
+</header>
 
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<nav>
+    <button class="tabBtn active" data-tab="home">Home</button>
+    <button class="tabBtn" data-tab="about">About</button>
+    <button class="tabBtn" data-tab="chat">Chat</button>
+</nav>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="card">
-        <h3>Photo Editing</h3>
-        <p>Professional retouching, background removal, and creative edits.</p>
-      </div>
-      <div class="card">
-        <h3>Video Editing</h3>
-        <p>Smooth cuts, effects, transitions, and cinematic style edits.</p>
-      </div>
-      <div class="card">
-        <h3>Custom Design</h3>
-        <p>Logos, posters, and social media content designed for impact.</p>
-      </div>
+<section id="home" class="active">
+    <h2>Welcome to The OG's Pet Website</h2>
+    <p>This website is full of content and fun stuff. Explore the tabs!</p>
+</section>
+
+<section id="about">
+    <h2>About OG</h2>
+    <p>This website was made by OG. The chatbot here is called "The OG's Pet".</p>
+</section>
+
+<section id="chat">
+    <h2>Chat with The OG's Pet</h2>
+    <div id="chatBox"></div>
+    <div class="options">
+        <button onclick="botMessage('BYE BYE!!!')">BYE BYE!!!</button>
+        <button onclick="notifyOG()">Talk directly with the OG</button>
     </div>
-  </section>
+</section>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>At OG Designers, we bring creativity and precision together. 
-    Whether it’s enhancing photos or crafting stunning videos, 
-    our goal is to make your content stand out.</p>
-  </section>
+<footer>
+    &copy; 2025 The OG's Pet. All rights reserved.
+</footer>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Have a project in mind? Let’s talk!</p>
-    <p>Email: <span class="email">aryannirmal058@gmail.com</span></p>
-  </section>
+<script>
+    // Tabs functionality
+    const tabs = document.querySelectorAll('.tabBtn');
+    const sections = document.querySelectorAll('section');
 
-  <footer>
-    <p>&copy; 2025 OG Designers. All rights reserved.</p>
-  </footer>
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            sections.forEach(s => s.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Chatbot messages
+    const chatBox = document.getElementById('chatBox');
+    function botMessage(msg) {
+        const div = document.createElement('div');
+        div.classList.add('chat-message', 'bot');
+        div.textContent = "OG's Pet: " + msg;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Browser notification for OG
+    function notifyOG() {
+        if (Notification.permission === 'granted') {
+            new Notification("OG's Pet", {
+                body: "A user wants to talk to the OG!",
+                icon: "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+            });
+        } else if (Notification.permission !== 'denied') {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') notifyOG();
+            });
+        }
+    }
+
+    // Initial greeting
+    botMessage("Hello! I am The OG's Pet. How can I assist you today?");
+</script>
 
 </body>
 </html>
+
