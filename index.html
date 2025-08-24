@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,70 +8,71 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+      background-color: #f2f2f2;
       color: #333;
     }
     header {
-      background-color: #1f1f1f;
-      color: #fff;
-      padding: 40px 20px;
+      background-color: #222;
+      color: white;
       text-align: center;
+      padding: 50px 20px;
     }
     header h1 {
-      font-size: 3em;
       margin: 0;
+      font-size: 3em;
     }
-    header p.slogan {
+    header p {
       font-size: 1.2em;
-      margin-top: 10px;
-      font-style: italic;
+      margin: 10px 0 0;
     }
     nav {
-      background-color: #333;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      background-color: #444;
     }
     nav a {
-      float: left;
-      display: block;
-      color: #fff;
-      text-align: center;
-      padding: 14px 20px;
+      color: white;
+      padding: 15px 30px;
       text-decoration: none;
+      display: inline-block;
     }
     nav a:hover {
-      background-color: #575757;
+      background-color: #666;
     }
     section {
-      padding: 60px 20px;
-      max-width: 1000px;
+      padding: 50px 20px;
+      max-width: 1200px;
       margin: auto;
     }
     h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
       text-align: center;
-      font-size: 2.5em;
-      margin-bottom: 40px;
-      color: #1f1f1f;
     }
     ul {
       list-style-type: none;
       padding: 0;
     }
     ul li {
-      font-size: 1.2em;
+      background-color: white;
       margin: 10px 0;
-      background-color: rgba(255,255,255,0.7);
-      padding: 15px;
+      padding: 20px;
       border-radius: 10px;
-      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .services ul li {
+      font-size: 1.1em;
     }
     footer {
+      background-color: #222;
+      color: white;
       text-align: center;
       padding: 20px;
-      background-color: #1f1f1f;
-      color: #fff;
+      margin-top: 50px;
     }
-    footer p {
-      margin: 5px 0;
+    .prices ul li {
+      font-size: 1.1em;
+      margin: 10px 0;
     }
   </style>
 </head>
@@ -79,18 +80,17 @@
 
 <header>
   <h1>OG Graphical Designing & Photo Video Editing Solution</h1>
-  <p class="slogan">Have a lavish feel in your life</p>
+  <p>Have a lavish feel in your life</p>
 </header>
 
 <nav>
   <a href="#services">Services</a>
-  <a href="#about">About</a>
-  <a href="#ogs">Meet Our OGs</a>
   <a href="#prices">Prices</a>
+  <a href="#ogs">Meet Our OGs</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<section id="services">
+<section id="services" class="services">
   <h2>Our Services</h2>
   <ul>
     <li>Photo Editing</li>
@@ -99,39 +99,35 @@
   </ul>
 </section>
 
-<section id="about">
-  <h2>About Us</h2>
-  <p>OG Graphical Designing & Photo Video Editing Solution is dedicated to bringing your ideas to life through creative, high-quality photo and video editing. Our mission is to provide innovative solutions for students, businesses, and content creators, ensuring every project reflects style, professionalism, and originality.</p>
+<section id="prices" class="prices">
+  <h2>Our Prices</h2>
+  <ul>
+    <li>1 Video - 50 Rupees</li>
+    <li>1 Photo - 10 Rupees</li>
+    <li>1 Poster - 25 Rupees</li>
+    <li>1 Presentation - 75 Rupees</li>
+    <li>1 Logo - 75 Rupees</li>
+  </ul>
 </section>
 
 <section id="ogs">
   <h2>Meet Our OGs</h2>
   <ul>
-    <li><strong>Aryan Nirmal</strong> - 12-year-old great entrepreneur and student</li>
-  </ul>
-</section>
-
-<section id="prices">
-  <h2>Our Prices</h2>
-  <ul>
-    <li>1 Video: ₹50</li>
-    <li>1 Photo: ₹10</li>
-    <li>1 Poster: ₹25</li>
-    <li>1 Presentation: ₹75</li>
-    <li>1 Logo: ₹75</li>
+    <li>
+      <strong>Aryan Nirmal</strong> - 12-year-old entrepreneur, student, and creative genius.<br>
+      Aryan is the mastermind behind OG Graphical Designing & Photo Video Editing Solution. Despite being young, he is highly ambitious, innovative, and passionate about design and technology. He excels at <strong>photo editing, video editing, poster creation, presentation design, and logo making</strong>. Aryan is known for his entrepreneurial spirit, leadership qualities, and dedication to delivering high-quality creative solutions. With a keen eye for detail, Aryan aims to provide clients with professional, visually stunning work that stands out. He balances his studies with his business ventures, proving that age is no barrier to creativity and success.
+    </li>
   </ul>
 </section>
 
 <section id="contact">
   <h2>Contact Us</h2>
-  <p>If you want any of our services, please contact us at: <strong>aryannirmal058@gmail.com</strong></p>
+  <p>If you want any of our services, please contact: <a href="mailto:aryannirmal058@gmail.com">aryannirmal058@gmail.com</a></p>
 </section>
 
 <footer>
-  <p>© 2025 OG Graphical Designing & Photo Video Editing Solution. All Rights Reserved.</p>
-  <p>Made with love by ChatGPT</p>
+  <p>&copy; 2025 OG Graphical Designing & Photo Video Editing Solution | Made with love by ChatGPT</p>
 </footer>
 
 </body>
 </html>
-
